@@ -94,16 +94,18 @@ class MARTrainDataset(udata.Dataset):
     
 if __name__ == "__main__":
     archivo_csv = "ruta/al/archivo.csv" # Aqui va el directorio de tu csv
+
+    # Esto son las transformaciones que vamos a aplicar a las imagenes, en este caso solo normalizamos los valores de las imagenes para que esten entre 0 y 1, y luego los escalamos a 255 para que sean compatibles con las redes neuronales
     train_transform = transforms.Compose([
-        transforms.ToTensor(),
-        transforms.Normalize(mean=[0.5], std=[0.5])
+        transforms.ToTensor(), # Lo convertimos a tensor para poder aplicarle las transformaciones de torchvision
+        transforms.Resize((128, 128)), # Esto es para reducir el tamaño de las imagenes y que el entrenamiento sea mas rapido, pero puedes cambiarlo a (512, 512) si quieres mantener el tamaño original de las imagenes
+        transforms.Normalize(mean=[0.5], std=[0.5]) # Esto es para normalizar los valores de las imagenes, pero puedes cambiarlo a (0.0, 1.0) si quieres mantener los valores originales de las imagenes
     ])
     
-    dataset = MARTrainDataset(archivo_csv, transform=train_transform)
+    dataset = MARTrainDataset(archivo_csv, transform=train_transform) # Iniciamos el dataset con el directorio del csv y las transformaciones que queremos aplicar a las imagenes
     data = dataset[0] # Esto nos da el primer elemento del dataset, que es una tupla con las imagenes y la mascara
     print(data[0].shape) # Esto nos da la forma de la imagen sm, que deberia ser (1, 512, 512) despues de la transformacion
     print(data[1].shape) # Esto nos da la forma del sinograma sm, que deberia ser (1, 512, 416) despues de la transformacion
     print(data[2].shape) # Esto nos da la forma de la imagen cm, que deberia ser (1, 512, 512) despues de la transformacion
     print(data[3].shape) # Esto nos da la forma del sinograma cm, que deberia ser (1, 512, 416) despues de la transformacion
     print(data[4].shape) # Esto nos da la forma de la mascara, que deberia ser (1, 512, 512) despues de la transformacion
-    

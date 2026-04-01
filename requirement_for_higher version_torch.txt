@@ -1,7 +1,5 @@
-Python 3.9.18 
 absl-py==2.1.0
 addict==2.4.0
-astra-toolbox==2.1.2
 beautifulsoup4==4.12.3
 blobfile==2.1.1
 cachetools==5.3.3
@@ -42,9 +40,9 @@ numpy==1.26.3
 nvidia-cublas-cu11==11.10.3.66
 nvidia-cuda-nvrtc-cu11==11.7.99
 nvidia-cuda-runtime-cu11==11.7.99
-nvidia-cudnn-cu11==8.5.0.96
+nvidia-cudnn-cu11==8.9.5.29
 oauthlib==3.2.2
-odl==1.0.0.dev0
+odl
 openai-clip==1.0.1
 opencv-python==4.9.0.80
 pandas==2.2.1
@@ -72,7 +70,7 @@ scikit-learn==1.4.2
 scipy==1.10.1
 shapely==2.0.3
 soupsieve==2.5
-tb-nightly==2.11.0a20220906
+tb-nightly==2.13.0a20230212
 tensorboard==2.16.2
 tensorboard-data-server==0.7.2
 tensorboard-plugin-wit==1.8.1
